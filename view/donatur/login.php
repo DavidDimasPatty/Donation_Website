@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <img src="../css/test1.png" id="logo">
 <body class="bg">
 <form method="POST"action="check" id='tes'>
