@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html>
+<link rel="stylesheet" type="text/css" href="/tugasbesar/view/css/style.css">
+<body class="bg">
 
-<head>
-Selamat Datang di Together We Can!
-</head>
+<div class="vh-100 d-flex justify-content-center align-items-center">
+
+<div class="row">
+<center> <h2 style="color:white;">Selamat Datang di Together We Can!</h2> </center>
+<center>
+<a class="col" href="view/donatur/login">Donatur</a>
+
+<a class="col ms-3" href="view/fundraiser/login">Fundraiser</a>
+
+<a class="col ms-3" href="view/admin/login">Admin</a>
+</center>
+</div>
 
 
-<body>
-<?php session_start(); $_SESSION['cek']='betul';?>
 
-<a href="view/donatur/login">donatur</a>
-
-<a href="view/fundraiser/login">fundraiser</a>
-
-<a href="view/admin/login">Admin</a>
-
+</div>
 </body>
-
-</html>
