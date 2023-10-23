@@ -1,3 +1,7 @@
+<?php
+ session_start();
+ $_SESSION['cek']='betul';
+?>
 <link rel="stylesheet" type="text/css" href="/tugasbesar/view/css/style.css">
 <body class="bg">
 
