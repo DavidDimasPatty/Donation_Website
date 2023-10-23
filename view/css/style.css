@@ -245,12 +245,13 @@ a:visited {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
   }
-  .textwecan{
+
+.textwecan{
 	font-size: 25px;
-	padding-left: 330px;
 	font-family: MANDATOR;
 	color: white;
 }
+
 #backriw{
 	padding-left: 620px;
 	font-size: 25px;

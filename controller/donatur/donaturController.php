@@ -96,7 +96,7 @@ class donaturController{
         $name="";
         $pw="";
         $_SESSION['cek']='betul';
-        $query= "SELECT * from user";
+        $query= "SELECT * from donatur";
        $check=false;
        $atas=false;
        $bawah=true;
@@ -267,14 +267,15 @@ class donaturController{
             $norek = $this->db->escapeString($norek);
             $email = $this->db->escapeString($email);
             $image = $this->db->escapeString($image);
-            $querytes = "SELECT nama,username,password FROM  user WHERE nama='$nama' and username='$username' and password='$password'";
+            $querytes = "SELECT nama,username,password FROM  donatur WHERE nama='$nama' and username='$username' and password='$password'";
             $res_u =$this->db->ngitungbaris($querytes);
             if ($res_u > 0) {
                echo "<script type='text/javascript'>alert('udah ada');history.go(-1);</script>";
               }
             else{
-              move_uploaded_file($temp,"C:/xampp/htdocs/tugasbesar/view/donatur/fotouser/$image");
-            $query = "INSERT INTO user (username,password,nama,email,notelp,norek,image) VALUES ('$username','$password','$nama','$email','$notelp','$norek','$image')";
+            echo $username;
+            move_uploaded_file($temp,"C:/xampp/htdocs/tugasbesar/view/donatur/fotouser/$image");
+            $query = "INSERT INTO donatur (username,password,nama,email,notelp,norek,image) VALUES ('$username','$password','$nama','$email','$notelp','$norek','$image')";
             $this->db->executeNonSelectQuery($query);
             header('Location:/tugasbesar/view/donatur/login/verif');
         }
@@ -296,7 +297,7 @@ public function view_user(){
   
 
   public function getAllUserWithName($name){
-		$query = "SELECT * from user";
+		$query = "SELECT * from donatur";
 		if ($name != "") {
 			$query .= " WHERE nama LIKE '%$name%'";
 		}
@@ -317,7 +318,7 @@ public function view_user(){
      
       if (isset($image) && $image!="") {
           $nama = $this->db->escapeString($nama);
-          $querytes = "UPDATE  user SET image='$image' where nama='$nama'";
+          $querytes = "UPDATE  donatur SET image='$image' where nama='$nama'";
           $this->db->executeNonSelectQuery($querytes);
           move_uploaded_file($temp,"C:/xampp/htdocs/tugasbesar/view/donatur/fotouser/$image");
          
@@ -337,10 +338,10 @@ public function checkeditpw(){
       $nama = $this->db->escapeString($nama);
        $password = $this->db->escapeString($password); 
        $password2 = $this->db->escapeString($password2);
-       $querytes = "SELECT * FROM  user WHERE nama='$nama' and password='$password'";
+       $querytes = "SELECT * FROM  donatur WHERE nama='$nama' and password='$password'";
        $res_u =$this->db->ngitungbaris($querytes);
          if ($res_u > 0) {
-         $query = "UPDATE  user SET password='$password2' where nama='$nama'";
+         $query = "UPDATE  donatur SET password='$password2' where nama='$nama'";
          $this->db->executeNonSelectQuery($query);
          header('Location: /tugasbesar/view/donatur/profil');
         }

@@ -30,7 +30,6 @@ class fundraiser{
 	public function getusername(){
 		return $this->username;
 	}
-	
 
 	public function getpassword(){
 		return $this->password;

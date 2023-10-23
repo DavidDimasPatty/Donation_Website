@@ -1,26 +1,36 @@
-<p> Welcome To Together We Can!
-<?php 
-echo $_SESSION['name'];  
-echo date('yy-m-d');
-?>
-</p>
-<a href="../../riwayat/page?var=0">Riwayat</a>
-<a href="../../profil">Profil</a>
+<link rel="stylesheet" type="text/css" href="/tugasbesar/view/css/style.css">
 
-<link rel="stylesheet" type="text/css" href="../../css/style.css">
-<a href="../../login">Log Out</a>
+<header>
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+	<a href="../../riwayat/page?var=0">riwayat</a>
+	<a href="../../profil">profil</a>
+	<a href="../../login">log out</a>
+</div>
+<span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
+	<?php 
+	echo '<span class="ms-3">'.$_SESSION['name']."</span>";
+	echo '<span class="ms-3">'.date('d-m-y')."</span>";
+	?>
+</span>
+	<center>
+	<a class="textwecan">together we can</a>
+	</center>
+</header>
 
-<form method="POST"action="page?var=0">
-	<p>
-	</p>
-	
+
+<body class="bg">
+
+<form method="POST"action="page?var=0" class="mb-3">
+	<center>
 	<fieldset>
-		<legend>Search by Name</legend>
+		<legend style="color:white;">Search by Name</legend>
 		<input type="text" name="filter" value="<?php echo $nama; ?>">
 		<input type="submit" value="SEARCH">
 	</fieldset>
-</form><br>
-<hr>
+    </center>
+</form>
+
 <table id="myTable" class="table table-striped">
 	<tr>
 	
@@ -90,3 +100,14 @@ echo date('yy-m-d');
 		}
 	?>
 </table>
+</body>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>

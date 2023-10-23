@@ -67,18 +67,19 @@ case '/tugasbesar/view/fundraiser/login' :
                 break;
     
 
-        case '/tugasbesar/view/fundraiser/login/halamandepan' :
-          require_once "controller/fundraiser/fundraiserController.php";
-          $userCtrl1 = new fundraiserController();
-          echo $userCtrl1->view_haldepan();       
-          break;
+          case '/tugasbesar/view/fundraiser/login/halamandepan' :
+            require_once "controller/fundraiser/fundraiserController.php";
+            $userCtrl1 = new fundraiserController();
+            echo $userCtrl1->view_haldepan();       
+            break;
 
              case '/tugasbesar/view/donatur/signup' :
                 require_once "view/donatur/signup.php";
                 break;
-           case '/tugasbesar/view/fundraiser/signup' :
-           require_once "view/fundraiser/signup.php";
-             break;
+
+            case '/tugasbesar/view/fundraiser/signup' :
+            require_once "view/fundraiser/signup.php";
+              break;
 
              case '/tugasbesar/view/donatur/checkvalid' :
                 require_once "controller/donatur/donaturController.php";
