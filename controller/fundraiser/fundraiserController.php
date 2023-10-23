@@ -169,7 +169,7 @@ public function getid($name){
   $query_result = $this->db->executeSelectQuery($query);
   $result = [];
   foreach ($query_result as $key => $value) {
-          $result[] = new fundraiser($value['id'], $value['username'],$value['password'], $value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['validitas'],$value['image']);
+          $result[] = new fundraiser($value['id'], $value['username'],$value['password'], $value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['valid'],$value['image']);
       }
         $tes=0;
       foreach ($result as $key => $row) {
@@ -313,7 +313,7 @@ public function getidd($name){
       $query_result = $this->db->executeSelectQuery($query);
       $result = [];
       foreach ($query_result as $key => $value) {
-              $result[] = new fundraiser($value['id'], $value['username'], $value['password'],$value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['validitas'],$value['image']);
+              $result[] = new fundraiser($value['id'], $value['username'], $value['password'],$value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['valid'],$value['image']);
           }
       return $result;
       }

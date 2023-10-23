@@ -10,15 +10,15 @@
 </div>
 <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
 	<?php 
-	echo $_SESSION['name'];
-	echo date('yy-m-d');
+		echo '<span class="ms-3">'.$_SESSION['name']."</span>";
+		echo '<span class="ms-3">'.date('d-m-y')."</span>";
 	?>
 </span>
-<a class="textwecan">together we can</a>
+<center><a >Together We Can</a></center>
 </header>
 <div class="searchdonasi">
 <legend>cari apa yang kamu bantu</legend>
-<input type="text" name="filter" value="<?php echo $nama; ?>" id="caridonasi">
+<input type="text" name="filter" value="<?php echo $nama; ?>" id="caridonasi" class="mb-2">
 </div>
 </form>
 <div class="kotak">
