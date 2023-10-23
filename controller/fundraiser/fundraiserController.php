@@ -271,12 +271,14 @@ public function getidd($name){
     
     //buat riwayat selected
     public function getAllDonasiWithName1($name){
-      $query = "SELECT donasi.id,donasi.nama,userkedonasi.tanggal,donasi.max,donasi.terkumpul,donasi.keterangan,donasi.image,donasi.verif,userkedonasi.komentar,userkedonasi.anonim,userkedonasi.jumlaht,user.nama as nama2 from donasi inner join userkedonasi on donasi.id=userkedonasi.idD inner join user on user.id=userkedonasi.idU where donasi.id=$name";
+      $query = "SELECT donasi.id,donasi.nama,donasi.tanggal,donasi.max,donasi.terkumpul,donasi.keterangan,donasi.image,donasi.verif,riwayatfundraiser.komentar,riwayatfundraiser.anonim,riwayatfundraiser.jumlaht,riwayatfundraiser.namauser as nama2 from donasi inner join riwayatfundraiser on donasi.id=riwayatfundraiser.idD inner join user on user.id=riwayatfundraiser.idU where donasi.id=$name";
       $query_result = $this->db->executeSelectQuery($query);
       $result = [];
+      if ($query_result) {
       foreach ($query_result as $key => $value) {
               $result[] = new riwayatfundraiser($value['id'], $value['nama'],$value['tanggal'],$value['max'],$value['terkumpul'],$value['keterangan'],$value['image'],$value['verif'],$value['komentar'],$value['anonim'],$value['jumlaht'],$value['nama2']);
-          }
+      }
+     }
       return $result;
       }
 
