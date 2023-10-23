@@ -1,3 +1,16 @@
+<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+<header>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+      <a href="../login">log out</a>
+    </div>
+    <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
+    </span>
+      <center><a style="color:white; font-size:40px;" class="mb-5"><u>Selamat Datang Admin</u></a></center>
+</header>
+
+<body class="bg">
+
 <form method="POST" action="daftarfundraiser" >
 	<fieldset>
 		<legend>Search by Name</legend>
@@ -42,3 +55,17 @@
 </table>
 
 <a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
+
+</body>
+
+<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
+
+<script>
+	function openNav() {
+	document.getElementById("mySidenav").style.width = "250px";
+	}
+
+	function closeNav() {
+	document.getElementById("mySidenav").style.width = "0";
+	}
+</script>
