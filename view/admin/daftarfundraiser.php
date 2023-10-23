@@ -6,23 +6,22 @@
     </div>
     <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
     </span>
-      <center><a style="color:white; font-size:40px;" class="mb-5"><u>Selamat Datang Admin</u></a></center>
 </header>
 
 <body class="bg">
 
 <form method="POST" action="daftarfundraiser" >
-	<fieldset>
+	<center>
 		<legend>Search by Name</legend>
 		<input type="text" name="filter2" value="<?php echo $name; ?>">
 		<input type="submit" value="SEARCH">
-	</fieldset>
+	</center>
 </form>
 <br>
 <hr>
+<center>
 <table>
 	<tr>
-		<th></th>
 		<th>id</th>
 		<th>username</th>
 		<th>passwrod</th>
@@ -55,10 +54,8 @@
 </table>
 
 <a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
-
+	</center>
 </body>
-
-<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
 
 <script>
 	function openNav() {

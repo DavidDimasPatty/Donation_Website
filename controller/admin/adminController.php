@@ -45,7 +45,7 @@ class adminController{
 
 
     public function getAllUserWithName($name){
-		$query = "SELECT * from user";
+		$query = "SELECT * from donatur";
 		if ($name != "") {
 			$query .= " WHERE nama LIKE '%$name%'";
 		}
@@ -78,16 +78,16 @@ class adminController{
     public function getAllFundraiserWithName($name){
 		$query = "SELECT * from fundraiser";
 		if ($name != "") {
-			$query .= " WHERE namaorganisasi LIKE '%$name%' order by validitas asc";
+			$query .= " WHERE namaorganisasi LIKE '%$name%' order by valid asc";
 		}
 		else {
-			$query .= " order by validitas asc";
+			$query .= " order by valid asc";
 		}
 
 		$query_result = $this->db->executeSelectQuery($query);
 		$result = [];
 		foreach ($query_result as $key => $value) {
-            $result[] = new fundraiser($value['id'], $value['username'],$value['password'],$value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['validitas'],$value['image']);
+            $result[] = new fundraiser($value['id'], $value['username'],$value['password'],$value['namaorganisasi'],$value['alamatorganisasi'],$value['notelp'],$value['norek'],$value['valid'],$value['image']);
 		}
 		return $result;
     }
@@ -126,9 +126,11 @@ class adminController{
 
 		$query_result = $this->db->executeSelectQuery($query);
 		$result = [];
+		if ($query_result) {
 		foreach ($query_result as $key => $value) {
             $result[] = new donasi($value['id'], $value['nama'],$value['tanggal'],$value['tanggalakhir'],$value['max'],$value['terkumpul'],$value['keterangan'],$value['image'],$value['verif']);
         }
+		}
 		return $result;
     }
     
@@ -183,25 +185,26 @@ class adminController{
 	
 	//bank dapet
  	public function caribank($name){
-		$query = "SELECT donasi.nama as s1,user.nama as s2,userkedonasi.tanggal,userkedonasi.jumlaht,sum(userkedonasi.jumlaht) as s3 from donasi inner join userkedonasi on donasi.id=userkedonasi.idD inner join user on user.id=userkedonasi.idU  ";
+		$query = "SELECT donasi.nama as s1,user.nama as s2,riwayatfundraiser.tanggal,riwayatfundraiser.jumlaht,sum(riwayatfundraiser.jumlaht) as s3 from donasi inner join riwayatfundraiser on donasi.id=riwayatfundraiser.idD inner join user on user.id=riwayatfundraiser.idU  ";
 		$max= $_SESSION['max'];
 		$page=$_GET['var'];
 		$_SESSION['jumlah']=$this->db->ngitungbaris($query);
 		if ($name != "") {
-			$query .= " WHERE donasi.nama LIKE '%$name%' group by  donasi.nama,user.nama,userkedonasi.tanggal,userkedonasi.jumlaht order by verif asc LIMIT $page, $max";
+			$query .= " WHERE donasi.nama LIKE '%$name%' group by  donasi.nama,user.nama,riwayatfundraiser.tanggal,riwayatfundraiser.jumlaht order by verif asc LIMIT $page, $max";
 			$_SESSION['jumlah']=$this->db->ngitungbaris($query);
 			
 		}
 		else if($name=="") {
-			$query .= " group by  donasi.nama,user.nama,userkedonasi.tanggal,userkedonasi.jumlaht order by verif asc  LIMIT $page, $max";
+			$query .= " group by  donasi.nama,user.nama,riwayatfundraiser.tanggal,riwayatfundraiser.jumlaht order by verif asc  LIMIT $page, $max";
 			$_SESSION['jumlah']=$this->db->ngitungbaris($query);
 		}
 
 		$query_result = $this->db->executeSelectQuery($query);
 		$result = [];
-		
-		foreach ($query_result as $key => $value) {
-            $result[] = new bankadmin($value['s1'], $value['s2'],$value['tanggal'],$value['jumlaht'],$value['s3']);
+		if($result){
+			foreach ($query_result as $key => $value) {
+				$result[] = new bankadmin($value['s1'], $value['s2'],$value['tanggal'],$value['jumlaht'],$value['s3']);
+			}
 		}
 		
 		return $result;
@@ -215,7 +218,7 @@ class adminController{
 		else if (isset($_POST['filter']) && $_POST['filter'] == "") {
 			$name ="";
 		}
-			$result = $this->caribank($name);
+		$result = $this->caribank($name);
 
 		return View::createView('admin/bank.php',
 			[

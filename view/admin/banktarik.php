@@ -6,19 +6,19 @@
     </div>
     <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
     </span>
-      <center><a style="color:white; font-size:40px;" class="mb-5"><u>Selamat Datang Admin</u></a></center>
 </header>
 
-<body class="bg">
+<body class="bg" style="color:white;">
 	<form method="POST" action="?var=0" >
-		<fieldset>
+		<center>
 			<legend>Search by Name</legend>
 			<input type="text" name="filter" value="<?php echo $name;?>" placeholder="Cari Nama Donasi">
 			<input type="submit" value="SEARCH">
-		</fieldset>
+		</center>
 	</form>
 	<br>
 	<hr>
+	<center>
 	<table>
 		<tr>
 			<th>nama donasi</th>
@@ -45,26 +45,18 @@
 			}
 			
 			echo'</table>';
+			echo '</center>';
+			echo '<center>';
 			echo'Total penarikan pada Rekening BCA:';
 			$total1= new adminController();
 			$duit1= current($total1->pengeluaran_duit1());
-			if(reset($duit1)==0){
-				echo "belum ada yang masuk";
-			}
-			else{
-			echo reset($duit1);
-			}
 			echo "<br>";
 
 			echo'Total penarikan pada Rekening MANDIRI:';
+			echo '</center>';
 			$total2= new adminController();
 			$duit2= current($total2->pengeluaran_duit2());
-			if(reset($duit2)==0){
-				echo "belum ada yang masuk";
-			}
-			else{
-			echo reset($duit2);
-			}
+			echo '<center>';
 			$nopage=0;
 			for ($halaman; $halaman <= $_SESSION['jumlah']; $halaman=$halaman+10) {
 				$nopage++;
@@ -78,14 +70,13 @@
 				}	
 			}
 
-
+			echo '</center>';
 		
 		?>
-
-	<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
+	<center>
+		<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
+	</center>
 </body>
-
-<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
 
 <script>
 	function openNav() {

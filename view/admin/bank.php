@@ -6,19 +6,19 @@
     </div>
     <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
     </span>
-      <center><a style="color:white; font-size:40px;" class="mb-5"><u>Selamat Datang Admin</u></a></center>
 </header>
 
 <body class="bg">
 	<form method="POST" action="?var=0" >
-		<fieldset>
-			<legend>Search by Name</legend>
+		<center>
+			<legend style="color:white;">Search by Name</legend>
 			<input type="text" name="filter" value="<?php echo $name;?>" placeholder="Cari Nama Donasi">
 			<input type="submit" value="SEARCH">
-		</fieldset>
+		</center>
 	</form>
 	<br>
 	<hr>
+	<center>
 	<table>
 		<tr>
 			<th>nama donasi</th>
@@ -46,40 +46,38 @@
 			}
 			
 			echo'</table>';
-			echo'Total Donasi Terkumpul di Rekening BCA:';
+			echo' <h4 style="color:white;">Total Donasi Terkumpul di Rekening BCA:</h4>';
 			$total1= new adminController();
 			$duit1= current($total1->duit1());
-			echo reset($duit1);
 		
 			echo "<br>";
 
-			echo'Total Donasi Terkumpul di Rekening MANDIRI:';
+			echo'<h4  style="color:white;">Total Donasi Terkumpul di Rekening MANDIRI:</h4>';
 			$total2= new adminController();
 			$duit2= current($total2->duit2());
 
-			echo reset($duit2);
 			$nopage=0;
 			for ($halaman; $halaman <= $_SESSION['jumlah']; $halaman=$halaman+10) {
 				$nopage++;
 				if($name!=""){
 					$_SESSION['s']=$name;
-					echo " <a href='bankadmin?var=$halaman'>$nopage </a>";
+					echo "<center><a href='bankadmin?var=$halaman'>$nopage </center></a>";
 				}
 				else if($name==""){
 					$_SESSION['s']="";
-					echo " <a href='bankadmin?var=$halaman'>$nopage </a>";
+					echo " <center><a href='bankadmin?var=$halaman'>$nopage </center> </a>";
 				}	
 			}
 
 
 		
 		?>
-
-	<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
-
+	</center>
+	<center>
+		<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
+	</center>
 </body>
 
-<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
 
 <script>
 	function openNav() {

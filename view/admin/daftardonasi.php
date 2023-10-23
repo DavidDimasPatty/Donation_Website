@@ -6,19 +6,19 @@
     </div>
     <span style="font-size:25px;cursor:pointer;font-family:MANDATOR;color:white;" onclick="openNav()">&#9776;
     </span>
-      <center><a style="color:white; font-size:40px;" class="mb-5"><u>Selamat Datang Admin</u></a></center>
 </header>
 
 <body class="bg">
 	<form method="POST" action="page?var=0" >
-		<fieldset>
+		<center>
 			<legend>Search by Name</legend>
 			<input type="text" name="filter" value="<?php echo $name;?>">
 			<input type="submit" value="SEARCH">
-		</fieldset>
+		</center>
 	</form>
 	<br>
 	<hr>
+	<center>
 	<table>
 		<tr>
 			<th>id</th>
@@ -52,6 +52,7 @@
 			}
 			
 			echo'</table>';
+			echo '<div>';
 			$nopage=0;
 			for ($halaman; $halaman <= $_SESSION['jumlah']; $halaman=$halaman+4) {
 				$nopage++;
@@ -64,14 +65,13 @@
 					echo " <a href='../daftardonasi/page?var=$halaman'>$nopage </a>";
 				}	
 			}
+			echo '</div>';
 		
 		?>
 
 	<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
-
+	</center>
 </body>
-
-<a href="/tugasbesar/view/admin/login/halamandepan">Back to home</a>
 
 <script>
 	function openNav() {
