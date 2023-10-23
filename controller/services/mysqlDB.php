@@ -29,12 +29,14 @@ class MySQLDB{
 		$this->openConnection();
 		$query_result = $this->db_connection->query($sql);
 		$result = [];
+		if($query_result!=false){
 		if ($query_result->num_rows > 0) {
 			//output data of each row
 			while($row = $query_result->fetch_assoc()){
 				$result[] = $row;
 			}
 		}
+	}
 		$this->closeConnection();
 		return $result;
 	}
@@ -63,6 +65,8 @@ class MySQLDB{
 		$this ->openConnection();
 		$query_result=$this->db_connection->query($sql);
 		$result=[];
+		$hasil=0;
+		if($query_result!=false){
 		if($query_result->num_rows>0){
 			while($row=$query_result->fetch_assoc()){
 				$result[]=$row;
@@ -70,6 +74,7 @@ class MySQLDB{
 		}
 		$hasil=count($result);
 		$this->closeConnection();
+		}
 		return $hasil;
 		}
 	

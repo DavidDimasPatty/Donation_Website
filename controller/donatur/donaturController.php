@@ -50,21 +50,21 @@ class donaturController{
       return $result;
       }
 
-    public function view_donasi(){
-       $nama=$_SESSION['s'];
-		if (isset($_POST['filter']) && $_POST['filter'] != "") {
-			$nama = $this->db->escapeString($_POST['filter']);
-		}
-		else if (isset($_POST['filter']) && $_POST['filter'] == "") {
-			$nama ="";
-		}
-		$result = $this->getAllDonasiWithName($nama);
-		return View::createView('donatur/haldepan.php',
-			[
-				"nama"=> $nama,
-				"result"=> $result
-			]);
-  }
+      public function view_donasi(){
+      $nama=$_SESSION['s'];
+      if (isset($_POST['filter']) && $_POST['filter'] != "") {
+        $nama = $this->db->escapeString($_POST['filter']);
+      }
+      else if (isset($_POST['filter']) && $_POST['filter'] == "") {
+        $nama ="";
+      }
+      $result = $this->getAllDonasiWithName($nama);
+      return View::createView('donatur/haldepan.php',
+        [
+          "nama"=> $nama,
+          "result"=> $result
+        ]);
+    }
 
   //
   public function view_selected_donasi(){

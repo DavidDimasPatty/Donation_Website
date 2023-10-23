@@ -37,6 +37,7 @@ $halaman=0;
 	$max=4;
 	$_SESSION['max']=4;
 foreach ($result as $key => $row) {
+	if(sizeof($row)>0){
     echo "<tr>";
     echo "<td>".$row->getid()."</td>";
     $value=$row->getid();
@@ -47,6 +48,7 @@ foreach ($result as $key => $row) {
     echo "<td>".$row->getanonim()."</td>";
     echo "</tr>";
 }
+}
 echo'</table>';
 		$nopage=0;
 		for ($halaman; $halaman <= $_SESSION['jumlah']; $halaman=$halaman+4) {
@@ -54,18 +56,18 @@ echo'</table>';
 			if($nama!=""){
 				$_SESSION['s']=$nama;
 				$_SESSION['halaman']=$halaman;
-				echo " <a href='../riwayat/page?var=$halaman'>$nopage </a>";
+				echo " <center> <a href='../riwayat/page?var=$halaman'>$nopage </a> </center>";
 			}
 			else if($nama==""){
 				$_SESSION['s']="";
 				$_SESSION['halaman']=$halaman;
-				echo " <a href='../riwayat/page?var=$halaman'>$nopage </a>";
+				echo " <center> <a href='../riwayat/page?var=$halaman'>$nopage </a> </center>";
 			}	
 		}
 ?>
 
-<a href="../login/halamandepan/page?var=0" id="backriw">back</a>
 </table>
+<center> <a href="../login/halamandepan/page?var=0" style="font-size:30px">Back</a> </center>
 <div class='h6'>we care, we share, we love</div>
 </div>
 </body>

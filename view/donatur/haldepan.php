@@ -31,7 +31,8 @@
     </center>
 </form>
 
-<table id="myTable" class="table table-striped">
+<center>
+<table id="myTable" class="table table-striped" style="width:80%">
 	<tr>
 	
 		<th>id</th>
@@ -41,6 +42,7 @@
 		<th>max</th>
 		<th>terkumpul</th>
 		<th>keterangan</th>
+		<th>image</th>
 	</tr>	
 	<?php
 		$halaman=0;
@@ -49,7 +51,7 @@
 		foreach ($result as $key => $row) {
 			echo "<tr>";
 			$tang=$row->gettanggal();
-			if($tang<=date('yy-m-d')&&$row->gettanggalakhir()>=date('yy-m-d')){	
+			if($tang<=date('Y-m-d')&&$row->gettanggalakhir()>=date('Y-m-d')){	
 				//buat get
 				$value=$row->getid();
 				//BERAPA HARI LAGI
@@ -58,15 +60,14 @@
 				$secs = $datetime2 - $datetime1;// == <seconds between the two times>
 				$days = $secs / 86400;
 				$days=intval($days);
-			
-				echo "<td onclick=".$_SESSION['nama'.$value]=$value."><a href='../campaign?var=$value'>".$row->getnama()." </a></td>";
+				echo "<td>".$row->getid()."</td>";
+				echo "<td onclick=".$_SESSION['nama'.$value]=$value."><a href='../campaign?var=$value' style='color:black;'>".$row->getnama()." </a></td>";
 				echo "<td>".$row->gettanggal()."</td>";
 				echo "<td>".$days."Hari Lagi</td>";
-				echo "<td>".$row->getnamafund()."</td>";
 				echo "<td>".$row->getmax()."</td>";
 				echo "<td>".$row->getterkumpul()."</td>";
 				echo "<td>".$row->getketerangan()."</td>";
-				echo "<td> <img src='../../../donatur/foto/".$row->getimage()."'></td>";
+				echo "<td> <img src='../../../donatur/foto/".$row->getimage()."' style='width:150px'></td>";
 				echo "</tr>";
 			}
 			else{
@@ -74,7 +75,6 @@
 				echo "<td >".$row->getnama()." (Donasi Sudah Ditutup)</td>";
 				echo "<td>".$row->gettanggal()."</td>";
 				echo "<td>".$row->gettanggalakhir()."</td>";
-				echo "<td>".$row->getnamafund()."</td>";
 				echo "<td>".$row->getmax()."</td>";
 				echo "<td>".$row->getterkumpul()."</td>";
 				echo "<td>".$row->getketerangan()."</td>";
@@ -90,16 +90,17 @@
 			if($nama!=""){
 				$_SESSION['s']=$nama;
 				$_SESSION['halaman']=$halaman;
-				echo " <a href='../halamandepan/page?var=$halaman'>$nopage </a>";
+				echo " <center> <a href='../halamandepan/page?var=$halaman'>$nopage </a> </center>";
 			}
 			else if($nama==""){
 				$_SESSION['s']="";
 				$_SESSION['halaman']=$halaman;
-				echo " <a href='../halamandepan/page?var=$halaman'>$nopage </a>";
+				echo " <center> <a href='../halamandepan/page?var=$halaman'>$nopage </a> </center>";
 			}	
 		}
 	?>
 </table>
+</center>
 </body>
 
 <script>
